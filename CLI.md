@@ -1,5 +1,5 @@
 npm init -y
-npm install express nodemon mongoose dotenv joi bcryptjs jsonwebtoken eslint
+npm install express nodemon mongoose dotenv joi bcryptjs jsonwebtoken eslint moment
 npx eslint --init
 
 change package.json to use ESmodules
@@ -17,3 +17,9 @@ make the models and routes folders
 add the User.js model from class 4 //NB: I refactored class 4 to use ES modules
 add unique: true to username and email
 change all instances of require to required as per documentation https://mongoosejs.com/docs/guide.html
+change all instances of mongoose.schema to new mongoose.schema as per documentation https://mongoosejs.com/docs/api/schema.html#Schema()
+
+add Post.js
+use moment package to calc expiration date
+https://momentjs.com/docs/#/manipulating/add/
+https://momentjs.com/docs/#/displaying/as-javascript-date/
