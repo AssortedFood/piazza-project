@@ -7,3 +7,5 @@ change package.json to use ESmodules
 
 add globals.node to eslint.config.js
 https://eslint.org/docs/latest/use/configure/language-options#specifying-globals
+
+make the mongodb database and add a cluster: piazza-cluster
