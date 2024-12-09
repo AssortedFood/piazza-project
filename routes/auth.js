@@ -7,17 +7,17 @@ import { registerValidation, loginValidation } from '../validations/validation.j
 import bcryptjs from 'bcryptjs';
 import jsonwebtoken from 'jsonwebtoken';
 
-router.post('/register', async(req,res)=>{
+router.post('/register', async(req, res)=>{
 
     // Validation 1 to check user input
     const {error} = registerValidation(req.body)
-    if(error){
+    if (error) {
         return res.status(400).send({message:error['details'][0]['message']})
     }
 
     // Validation 2 to check if user exists!
     const userExists = await User.findOne({email:req.body.email})
-    if(userExists){
+    if (userExists) {
         return res.status(400).send({message:'User already exists'})
     }
 
@@ -31,32 +31,32 @@ router.post('/register', async(req,res)=>{
         email:req.body.email,
         password:hashedPassword
     })
-    try{
+    try {
         const savedUser = await user.save()
         res.send(savedUser)
-    }catch(err){
+    } catch (err) {
         res.status(400).send({message:err})
     }
     
 })
 
-router.post('/login', async(req,res)=>{
+router.post('/login', async(req, res)=>{
 
     // Validation 1 to check user input
     const {error} = loginValidation(req.body)
-    if(error){
+    if (error) {
         return res.status(400).send({message:error['details'][0]['message']})
     }
 
     // Validation 2 to check if user exists!
     const user = await User.findOne({email:req.body.email})
-    if(!user){
+    if (!user) {
         return res.status(400).send({message:'User does not exist'})
     } 
     
     // Validation 3 to check user password
     const passwordValidation = await bcryptjs.compare(req.body.password,user.password)
-    if(!passwordValidation){
+    if (!passwordValidation) {
         return res.status(400).send({message:'Password is wrong'})
     }
     
