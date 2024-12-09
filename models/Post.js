@@ -37,10 +37,6 @@ const PostSchema = new mongoose.Schema({
         required: true,
         enum: ["Politics", "Health", "Sport", "Tech"] // these are the four valid topics
     },
-    timestamp: {
-        type: Date,
-        default: Date.now
-    },
     body: {
         type: String,
         required: true,
@@ -66,9 +62,16 @@ const PostSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    comments: [commentSchema] // since there can be multiple comments it is clearer to define the commentSchema separately and reference it here as an array
-})
+    comments: [commentSchema], // since there can be multiple comments it is clearer to define the commentSchema separately and reference it here as an array
+    activityScore: {
+        type: Number,
+        default: 0
+    }
+}, { timestamps: true }) // use mongoose timestamps instead of defining our own
 
-
+PostSchema.pre('save', function(next) { // this pre-save hook allows us to calculate an activity score for each post
+    this.activityScore = this.likes + this.dislikes + (this.comments.length * 5) // we weight likes/dislikes as 1 point each and comments as 5 points each
+    next();
+  });
 
 export default mongoose.model('post', PostSchema);
