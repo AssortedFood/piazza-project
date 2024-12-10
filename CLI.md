@@ -37,6 +37,18 @@ https://mongoosejs.com/docs/middleware.html#pre
 
 replace my timestamps element with the official https://mongoosejs.com/docs/timestamps.html
 
+write validation for routes
+https://joi.dev/api/?v=17.13.3
+https://stackoverflow.com/questions/50156176/how-to-use-enum-values-with-joi-string-validation
+
 start creating `routes/posts.js`
 realise that even though we have a status for posts the status is never changed, make a note to implement node-cron
 `npm install node-cron`
+
+`npm install joi-objectid`
+
+update the mongodb
+https://www.w3schools.com/nodejs/nodejs_mongodb_update.asp
+
+use $inc to increment likes https://www.mongodb.com/docs/manual/reference/operator/update/inc/
+mongoose reverse sort: https://stackoverflow.com/questions/47624681/sort-by-reverse-order-mongoose
