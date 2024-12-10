@@ -4,7 +4,7 @@ const router = express.Router();
 import Post from '../models/Post.js';
 import { postValidation, topicValidation, idValidation, commentValidation } from '../validations/validation.js';
 
-import auth from '../middleware/verifyToken.js';
+import auth from '../verifyToken.js';
 
 router.post('/create', auth, async(req, res)=>{ // create a post
     const author = req.user._id;
@@ -154,3 +154,5 @@ router.post('/expired/:topic', auth, async(req, res)=>{ // get expired posts by 
         res.status(500).send(`Internal server error.${err.message}`);
     }
 });
+
+export default router;
