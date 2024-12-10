@@ -21,7 +21,7 @@ const PostSchema = new mongoose.Schema({
     topic: {
         type: [String], // type is an array of strings, which allows users to assign more than one category to a post
         required: true,
-        enum: ["Politics", "Health", "Sport", "Tech"] // these are the four valid topics
+        enum: ["Politics", "Health", "Sports", "Tech"] // these are the four valid topics
     },
     body: {
         type: String,

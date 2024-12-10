@@ -22,7 +22,7 @@ const loginValidation = (data) => {
 const postValidation = (data) => {
     const schemaValidation = joi.object({
         title: joi.string().required().min(1).max(256),
-        topic: joi.array().items(joi.string().valid("Politics", "Health", "Sport", "Tech")).required(),
+        topic: joi.array().items(joi.string().valid("Politics", "Health", "Sports", "Tech")).required(),
         body: joi.string().required().min(1).max(2048)
     })
     return schemaValidation.validate(data)
@@ -30,7 +30,7 @@ const postValidation = (data) => {
 
 const topicValidation = (data) => {
     const schemaValidation = joi.object({
-        topic: joi.array().items(joi.string().valid("Politics", "Health", "Sport", "Tech")).required(),
+        topic: joi.array().items(joi.string().valid("Politics", "Health", "Sports", "Tech")).required(),
     })
     return schemaValidation.validate(data)
 }
