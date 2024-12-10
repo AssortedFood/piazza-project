@@ -52,3 +52,13 @@ https://www.w3schools.com/nodejs/nodejs_mongodb_update.asp
 
 use $inc to increment likes https://www.mongodb.com/docs/manual/reference/operator/update/inc/
 mongoose reverse sort: https://stackoverflow.com/questions/47624681/sort-by-reverse-order-mongoose
+
+```
+git clone https://github.com/AssortedFood/piazza-project.git
+sudo apt install -y docker.io
+sudo systemctl start docker
+sudo systemctl enable docker
+sudo usermod -aG docker $USER
+
+
+```
